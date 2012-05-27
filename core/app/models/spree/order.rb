@@ -254,7 +254,7 @@ module Spree
       true
     end
 
-    def add_variant(variant, quantity = 1)
+    def add_variant(variant, quantity = 1, store_id=0)
       current_item = find_line_item_by_variant(variant)
       if current_item
         current_item.quantity += quantity
@@ -263,6 +263,7 @@ module Spree
         current_item = LineItem.new(:quantity => quantity)
         current_item.variant = variant
         current_item.price   = variant.price
+        current_item.store_id = store_id
         self.line_items << current_item
       end
       current_item
