@@ -12,9 +12,18 @@ module Spree
         def new
           @payment_methods = Spree::PaymentMethod.where(:environment => Rails.env)
         end
+        
+        
+  	def object_params
+        	if params[:payment] and params[:payment_source] and source_params = params.delete(:payment_source)[params[:payment][:payment_method_id]]
+        	  params[:payment][:source_attributes] = source_params
+        	end
+        	params[:payment]
+      	end        
 
         def create
-          @payment = @order.payments.build(params[:payment])
+          # @payment = @order.payments.build(params[:payment])
+          @payment = @order.payments.build(object_params)
           if @payment.save
             render :show, :status => 201
           else
