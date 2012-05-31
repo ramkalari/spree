@@ -40,6 +40,7 @@ module Spree
 
         def purchase
           perform_payment_action(:purchase)
+         
         end
 
         def void
@@ -70,12 +71,22 @@ module Spree
 
           begin
             @payment.send("#{action}!", *args)
-            render :show
+             next!
+            #render :show
           rescue Spree::Core::GatewayError => e
             @error = e.message
             render "spree/api/v1/errors/gateway_error", :status => 422
           end
         end
+        
+         def next!
+	          if @order.valid? && @order.next
+	            render :show, :status => 200
+	          else
+	            render :could_not_transition, :status => 422
+          end
+        
+        
       end
     end
   end
