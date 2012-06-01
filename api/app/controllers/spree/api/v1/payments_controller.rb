@@ -34,8 +34,7 @@ module Spree
           # @payment = @order.payments.build(params[:payment])
           @payment = @order.payments.build(object_params)
           if @payment.save
-            next!
-            #render :show, :status => 201
+            render :show, :status => 201
           else
             invalid_resource!(@payment)
           end
