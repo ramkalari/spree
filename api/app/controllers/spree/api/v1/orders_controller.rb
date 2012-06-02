@@ -55,6 +55,11 @@ module Spree
           render :show
         end
 
+        def last
+          last_completed_order = current_api_user.orders.complete.order("id desc").first
+          render :show
+        end
+
         private
 
         def map_nested_attributes
@@ -73,10 +78,7 @@ module Spree
           end
         end
 
-        def last
-          last_completed_order = current_api_user.orders.complete.order("id desc").first
-          render :show
-        end
+
 
       end
     end
