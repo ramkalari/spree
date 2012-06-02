@@ -56,7 +56,7 @@ module Spree
         end
 
         def last
-          last_completed_order = current_api_user.orders.complete.order("id desc").first
+          @order = current_api_user.orders.complete.order("id desc").first
           render :show
         end
 
