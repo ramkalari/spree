@@ -26,6 +26,7 @@ Spree::Core::Engine.routes.prepend do
       resources :orders do
         collection do
           get :search
+          get :last
         end
         member do
           put :address

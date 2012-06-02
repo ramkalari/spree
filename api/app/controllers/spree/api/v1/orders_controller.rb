@@ -72,6 +72,12 @@ module Spree
             render :could_not_transition, :status => 422
           end
         end
+
+        def last
+          last_completed_order = current_api_user.orders.complete.order("id desc").first
+          render :show
+        end
+
       end
     end
   end
