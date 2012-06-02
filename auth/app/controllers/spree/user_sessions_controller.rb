@@ -19,7 +19,8 @@ class Spree::UserSessionsController < Devise::SessionsController
 
     if user_signed_in?
       user = current_user
-      cookies.permanent[:api_key] = user.generate_api_key!      
+      user.generate_api_key!
+      cookies.permanent[:api_key] = user.api_key      
       respond_to do |format|
         format.html {
           flash.notice = t(:logged_in_succesfully)
