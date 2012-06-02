@@ -18,7 +18,7 @@ class Spree::UserSessionsController < Devise::SessionsController
     authenticate_user!
 
     if user_signed_in?
-      user = resource.record
+      user = current_user
       cookies.permanent[:api_key] = user.generate_api_key!      
       respond_to do |format|
         format.html {
