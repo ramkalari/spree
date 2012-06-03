@@ -53,6 +53,11 @@ module Spree
         can :read, Taxon
         can :index, Taxon
         #############################
+
+        #############################
+        can :purchase, Payment
+        #############################
+        
       end
 
       #include any abilities registered by extensions, etc.
