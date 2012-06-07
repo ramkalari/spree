@@ -13,7 +13,7 @@ describe "General Settings" do
       page.should have_content("Site Name")
       page.should have_content("Site URL")
       page.should have_content("Spree demo site")
-      page.should have_content("demo.spreecommerce.com")
+      page.should have_content("onecart.herokuapp.com")
     end
   end
 
