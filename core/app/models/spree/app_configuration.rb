@@ -61,7 +61,7 @@ module Spree
     preference :show_only_complete_orders_by_default, :boolean, :default => true
     preference :show_zero_stock_products, :boolean, :default => true
     preference :site_name, :string, :default => 'Spree Demo Site'
-    preference :site_url, :string, :default => 'demo.spreecommerce.com'
+    preference :site_url, :string, :default => 'onecart.herokuapp.com'
     preference :tax_using_ship_address, :boolean, :default => true
     preference :track_inventory_levels, :boolean, :default => true # will not track on_hand values for variants /products
 
