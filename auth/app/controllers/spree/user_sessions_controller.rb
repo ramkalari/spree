@@ -40,7 +40,7 @@ class Spree::UserSessionsController < Devise::SessionsController
       render :new
       }
       format.js{
-      	render :json => {:message => flash.now[:error], :success => false }.to_json }
+      	render :json => {:message => flash.now[:error], :success => false }.to_json
       }
     end
   end
