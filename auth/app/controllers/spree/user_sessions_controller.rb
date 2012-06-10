@@ -28,7 +28,8 @@ class Spree::UserSessionsController < Devise::SessionsController
         }
         format.js {
           #user = resource.record
-          render :json => @user.map(&:attributes)
+          render :json => {}
+          #@user.map(&:attributes)
           #render :json => {:ship_address => user.ship_address, :bill_address => user.bill_address}.to_json
         }
       end
