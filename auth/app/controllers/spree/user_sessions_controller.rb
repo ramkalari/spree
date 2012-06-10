@@ -20,22 +20,28 @@ class Spree::UserSessionsController < Devise::SessionsController
     if user_signed_in?
       user = current_user
       user.generate_api_key!
-      cookies.permanent[:api_key] = user.api_key      
+      cookies.permanent[:api_key] = user.api_key
+      flash.notice = t(:logged_in_succesfully)
       respond_to do |format|
         format.html {
-          flash.notice = t(:logged_in_succesfully)
           redirect_back_or_default(products_path)
         }
         format.js {
           #user = resource.record
-          render :json => {}
+          render :json => {:message => flash[:notice], :success => true }.to_json }
+          #render :json => {}
           #@user.map(&:attributes)
           #render :json => {:ship_address => user.ship_address, :bill_address => user.bill_address}.to_json
         }
       end
     else
-      flash.now[:error] = t('devise.failure.invalid')
+     flash.now[:error] = t('devise.failure.invalid')
+     format.html{
       render :new
+      }
+      format.js{
+      	render :json => {:message => flash.now[:error], :success => false }.to_json }
+      }
     end
   end
 
