@@ -28,7 +28,7 @@ class Spree::UserSessionsController < Devise::SessionsController
         }
         format.js {
           #user = resource.record
-          render :json => {:message => flash[:notice], :success => true }.to_json }
+          render :json => {:message => flash[:notice], :success => true }.to_json
           #render :json => {}
           #@user.map(&:attributes)
           #render :json => {:ship_address => user.ship_address, :bill_address => user.bill_address}.to_json
