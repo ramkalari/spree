@@ -27,21 +27,20 @@ class Spree::UserSessionsController < Devise::SessionsController
           redirect_back_or_default(products_path)
         }
         format.js {
-          #user = resource.record
           render :json => {:message => flash[:notice], :success => true }.to_json
-          #render :json => {}
-          #@user.map(&:attributes)
           #render :json => {:ship_address => user.ship_address, :bill_address => user.bill_address}.to_json
         }
       end
     else
      flash.now[:error] = t('devise.failure.invalid')
-     format.html{
-      render :new
-      }
-      format.js{
-      	render :json => {:message => flash.now[:error], :success => false }.to_json
-      }
+     respond_to do |format|
+     	format.html{
+     	 render :new
+     	 }
+     	 format.js{
+     	 	render :json => {:message => flash.now[:error], :success => false }.to_json
+     	 }
+     end
     end
   end
 
