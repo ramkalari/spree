@@ -26,12 +26,10 @@ class Spree::UserSessionsController < Devise::SessionsController
         format.html {
           redirect_back_or_default(products_path)
         }
-        format.json {
+        format.js {
           render :json => {:message => flash[:notice], :success => true }.to_json
           #render :json => {:ship_address => user.ship_address, :bill_address => user.bill_address}.to_json
         }
-        
-        
       end
     else
      flash.now[:error] = t('devise.failure.invalid')
@@ -39,7 +37,7 @@ class Spree::UserSessionsController < Devise::SessionsController
      	format.html{
      	 render :new
      	 }
-     	 format.json{
+     	 format.js{
      	 	render :json => {:message => flash.now[:error], :success => false }.to_json
      	 }
      end
