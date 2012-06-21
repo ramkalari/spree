@@ -60,7 +60,11 @@ module Spree
           render :show
         end
 
-        
+        def empty
+          authorize! :read, order
+          order.line_items.destroy_all
+          render :text => nil, :status => 200
+        end
 
         private
 
