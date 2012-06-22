@@ -78,9 +78,6 @@ module Spree
             render :could_not_transition, :status => 422
           end
         end
-
-
-
       end
     end
   end
