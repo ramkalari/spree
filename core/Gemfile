@@ -1,3 +1,5 @@
 eval(File.read(File.dirname(__FILE__) + '/../common_spree_dependencies.rb'))
 
+gem 'activemerchant', :git => 'git://github.com/ramkalari/active_merchant.git' 
+
 gemspec
