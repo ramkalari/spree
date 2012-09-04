@@ -35,7 +35,10 @@
   </tr>
 <% end %>
 </table>
+
+<% unless @products %>
 <%= paginate @products %>
+<% end %>
 
 <% content_for :sidebar do %>
   <div data-hook="admin_products_sidebar">
