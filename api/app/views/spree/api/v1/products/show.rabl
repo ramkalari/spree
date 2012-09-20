@@ -2,7 +2,7 @@ object @product
 attributes *product_attributes
 
 node :stores do |s|
-  s.stores.to_a.map { |m| { :name => m.name } }
+  s.stores.to_a.map { |m| { ::domains => m.:domains } }
 end
 
 child :variants_including_master => :variants do
