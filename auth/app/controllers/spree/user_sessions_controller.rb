@@ -27,8 +27,9 @@ class Spree::UserSessionsController < Devise::SessionsController
           redirect_back_or_default(products_path)
         }
         format.js {
-          render :json => {:message => flash[:notice], :success => true, :email => user.email, :ship_address => user.ship_address }.to_json
-          #render :json => {:ship_address => user.ship_address, :bill_address => user.bill_address}.to_json
+          last_completed_order = user.orders.complete.order("id desc").first
+          render :json => {:message => flash[:notice], :success => true, :email => user.email, :first_name => last_completed_order.billing_firstname, :last_name => last_completed_order.billing_lastname }.to_json
+          #render :json => {:ship_address => user.ship_address, }.to_json
         }
       end
     else
