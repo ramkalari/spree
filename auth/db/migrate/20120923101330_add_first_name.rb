@@ -1,4 +1,4 @@
-class RenameColumnsForDevise < ActiveRecord::Migration
+class AddFirstName < ActiveRecord::Migration
   def up
     add_column :spree_users, :first_name, :string
     add_column :spree_users, :last_name, :string
